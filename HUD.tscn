@@ -1,0 +1,267 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://HUD.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/SHADSER.TTF" type="DynamicFontData" id=2]
+[ext_resource path="res://Fonts/trashco.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Sounds/ButtonSound.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sprites/Icons/pause.png" type="Texture" id=5]
+[ext_resource path="res://Fonts/roboto.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Styles/ButtonNormal.tres" type="StyleBox" id=7]
+[ext_resource path="res://CloseButton.tscn" type="PackedScene" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 200
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=3]
+
+[sub_resource type="DynamicFont" id=13]
+size = 150
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 120
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 100
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="Theme" id=5]
+
+[sub_resource type="DynamicFont" id=6]
+size = 125
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFontData" id=7]
+font_path = "res://Fonts/SHADSER.TTF"
+
+[sub_resource type="DynamicFont" id=8]
+size = 100
+font_data = SubResource( 7 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 50
+use_mipmaps = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 72
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 100
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.862745, 0.0666667, 0.0666667, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.898039, 0.0196078, 0.0196078, 1 )
+
+[node name="HUD" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 1 )
+
+[node name="ScoreLabel" type="Label" parent="."]
+margin_top = 9.0
+margin_right = 1921.0
+margin_bottom = 261.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.878431, 0, 0, 1 )
+text = "100"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonSound" parent="." instance=ExtResource( 4 )]
+
+[node name="StartButton" type="Button" parent="."]
+margin_left = 693.0
+margin_top = 854.0
+margin_right = 1237.0
+margin_bottom = 1039.0
+theme = SubResource( 3 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/normal = ExtResource( 7 )
+
+[node name="PlayLabel" type="Label" parent="StartButton"]
+margin_left = -10.0
+margin_top = -10.2441
+margin_right = 548.0
+margin_bottom = 203.756
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Play"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InstructionsButton" type="Button" parent="."]
+margin_left = 51.0
+margin_top = 892.164
+margin_right = 483.0
+margin_bottom = 1039.16
+theme = SubResource( 3 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/normal = ExtResource( 7 )
+
+[node name="PlayLabel" type="Label" parent="InstructionsButton"]
+margin_left = -61.6332
+margin_top = -7.24475
+margin_right = 503.367
+margin_bottom = 206.755
+custom_fonts/font = SubResource( 14 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "?"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitButton" type="Button" parent="."]
+margin_left = 1427.14
+margin_top = 892.164
+margin_right = 1859.14
+margin_bottom = 1039.16
+theme = SubResource( 3 )
+custom_styles/hover = ExtResource( 7 )
+custom_styles/normal = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayLabel" type="Label" parent="QuitButton"]
+margin_left = -61.6332
+margin_top = 3.97986
+margin_right = 503.367
+margin_bottom = 217.98
+custom_fonts/font = SubResource( 15 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Exit"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseButton" type="Button" parent="."]
+pause_mode = 2
+visible = false
+margin_left = 24.0
+margin_top = 15.0
+margin_right = 164.0
+margin_bottom = 149.0
+focus_mode = 0
+theme = SubResource( 5 )
+enabled_focus_mode = 0
+icon = ExtResource( 5 )
+flat = true
+
+[node name="MessageTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="UpgradeHUD" type="Area2D" parent="."]
+pause_mode = 2
+visible = false
+
+[node name="UpgradesLabel" type="Label" parent="UpgradeHUD"]
+margin_left = 482.0
+margin_top = 876.0
+margin_right = 1427.0
+margin_bottom = 1002.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Upgrades"
+
+[node name="UpgradeButton1" type="Area2D" parent="UpgradeHUD"]
+position = Vector2( 51.7258, -52.4968 )
+scale = Vector2( 1.14827, 1.15741 )
+z_index = 1
+
+[node name="Upgrade1Text" type="Button" parent="UpgradeHUD/UpgradeButton1"]
+pause_mode = 2
+margin_left = 44.0
+margin_top = 396.0
+margin_right = 554.0
+margin_bottom = 716.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "WALL"
+
+[node name="Label" type="Label" parent="UpgradeHUD/UpgradeButton1/Upgrade1Text"]
+margin_left = 85.0
+margin_top = 233.0
+margin_right = 424.0
+margin_bottom = 284.0
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.957031, 0.287857, 0.287857, 1 )
+text = "666 Score"
+
+[node name="Popup" type="Area2D" parent="."]
+visible = false
+z_index = 1
+
+[node name="Rect" type="Button" parent="Popup"]
+pause_mode = 2
+margin_left = 125.0
+margin_top = 47.0
+margin_right = 1797.0
+margin_bottom = 1035.0
+custom_styles/disabled = ExtResource( 7 )
+disabled = true
+
+[node name="MessageLabel" type="Label" parent="Popup/Rect"]
+margin_left = 61.0203
+margin_top = 186.694
+margin_right = 1594.02
+margin_bottom = 619.694
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Dodge fake news and collect valuables.
+Move left: Click left of Trump, A, d-pad left
+Move right: Click right of trump, D, d-pad right"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MessageLabel2" type="Label" parent="Popup/Rect"]
+margin_left = 554.904
+margin_top = 16.0799
+margin_right = 2087.9
+margin_bottom = 449.08
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Instructions"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseInstructions" parent="Popup/Rect" instance=ExtResource( 8 )]
+margin_left = 1483.9
+margin_top = 0.147484
+margin_right = 1671.9
+margin_bottom = 115.147
+custom_styles/normal = SubResource( 12 )
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="InstructionsButton" to="." method="_on_InstructionsButton_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="PauseButton" to="." method="_on_PauseButton_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
+[connection signal="pressed" from="UpgradeHUD/UpgradeButton1/Upgrade1Text" to="." method="_on_Upgrade1Text_pressed"]
+[connection signal="pressed" from="Popup/Rect/CloseInstructions" to="." method="_on_CloseInstructions_pressed"]

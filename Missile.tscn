@@ -1,0 +1,103 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Missile.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Enemies/icbm.png" type="Texture" id=2]
+[ext_resource path="res://Explosion.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sprites/Effects/spark.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 9.81681, 10 )
+
+[sub_resource type="CircleShape2D" id=3]
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+flag_disable_z = true
+spread = 25.0
+flatness = 1.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 1000.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 90.0
+scale = 2.0
+scale_curve = SubResource( 5 )
+
+[node name="Missile" type="Area2D"]
+rotation = -1.5708
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -57.3879, -3.29825 )
+scale = Vector2( 45.6523, 11.7463 )
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2( 361.896, -2.4755 )
+scale = Vector2( 11.0667, 11.5634 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2( 452.562, -1.66506 )
+scale = Vector2( 3.54086, 4.24668 )
+shape = SubResource( 3 )
+
+[node name="Explosion" parent="." instance=ExtResource( 3 )]
+position = Vector2( 168.822, -6.02953 )
+
+[node name="Explosion2" parent="." instance=ExtResource( 3 )]
+
+[node name="Explosion3" parent="." instance=ExtResource( 3 )]
+position = Vector2( -90.4404, 0.000240187 )
+
+[node name="Explosion4" parent="." instance=ExtResource( 3 )]
+position = Vector2( -217.057, -12.0588 )
+
+[node name="Explosion5" parent="." instance=ExtResource( 3 )]
+position = Vector2( -343.674, -1.50224e-05 )
+
+[node name="Explosion6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 289.409, -0.00023149 )
+
+[node name="Explosion7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 416.026, -0.000225956 )
+
+[node name="Sparks" type="Particles2D" parent="."]
+position = Vector2( -267.733, -5.18552 )
+rotation = 3.14159
+scale = Vector2( 2, 1 )
+z_index = -1
+amount = 100
+lifetime = 0.75
+explosiveness = 0.01
+visibility_rect = Rect2( -1000, -1000, 2000, 2000 )
+process_material = SubResource( 6 )
+texture = ExtResource( 4 )
+
+[node name="EndTimer" type="Timer" parent="."]
+wait_time = 2.25
+one_shot = true
+[connection signal="timeout" from="EndTimer" to="." method="_on_EndTimer_timeout"]

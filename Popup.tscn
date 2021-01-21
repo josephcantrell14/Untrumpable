@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Styles/ButtonNormal.tres" type="StyleBox" id=1]
+[ext_resource path="res://Fonts/roboto.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://CloseButton.tscn" type="PackedScene" id=3]
+
+[sub_resource type="DynamicFont" id=51]
+size = 75
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=52]
+bg_color = Color( 0.862745, 0.0666667, 0.0666667, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.898039, 0.0196078, 0.0196078, 1 )
+
+[node name="Popup" type="Area2D"]
+z_index = 1
+
+[node name="Rect" type="Button" parent="."]
+pause_mode = 2
+margin_left = 125.0
+margin_top = 47.0
+margin_right = 1797.0
+margin_bottom = 1035.0
+custom_styles/disabled = ExtResource( 1 )
+disabled = true
+
+[node name="Label" type="Label" parent="Rect"]
+margin_left = 3.0
+margin_top = 137.0
+margin_right = 1670.0
+margin_bottom = 280.0
+custom_fonts/font = SubResource( 51 )
+text = "The quick brown fox jumps over"
+align = 1
+
+[node name="CloseInstructions" parent="Rect" instance=ExtResource( 3 )]
+margin_left = 1483.9
+margin_top = 0.147484
+margin_right = 1671.9
+margin_bottom = 115.147
+custom_styles/normal = SubResource( 52 )

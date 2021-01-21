@@ -1,0 +1,170 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://NNC.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Peach.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sprites/Backgrounds/TitleScreen.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Backgrounds/sky.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Backgrounds/GameOver.png" type="Texture" id=7]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=8]
+[ext_resource path="res://BookEvolution.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Diamond.tscn" type="PackedScene" id=10]
+[ext_resource path="res://QuestionMark.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Missile.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Tweeter.tscn" type="PackedScene" id=13]
+[ext_resource path="res://GolfBall.tscn" type="PackedScene" id=14]
+[ext_resource path="res://StormyCash.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Sounds/buysound.wav" type="AudioStream" id=16]
+[ext_resource path="res://Joemail.tscn" type="PackedScene" id=17]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 28.5996, -233.205, 0, 0, 0, 0, 156.917, -222.047, 0, 0, 0, 0, 346.605, -227.626, 0, 0, 0, 0, 525.134, -222.047, 0, 0, 0, 0, 703.663, -222.047, 0, 0, 0, 0, 915.667, -216.468, 0, 0, 0, 0, 1066.3, -216.468, 0, 0, 0, 0, 1250.41, -222.047, 0, 0, 0, 0, 1456.83, -222.047, 0, 0, 0, 0, 1579.57, -233.205, 0, 0, 0, 0, 1758.1, -216.468, 0, 0, 0, 0, 1864.1, -216.468 )
+}
+
+[node name="Main" type="Node"]
+script = ExtResource( 1 )
+NNC = ExtResource( 2 )
+Peach = ExtResource( 3 )
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="EnemyTimer" type="Timer" parent="."]
+wait_time = 0.66
+
+[node name="EndTimer" type="Timer" parent="."]
+wait_time = 2.25
+one_shot = true
+
+[node name="StartPosition" type="Position2D" parent="."]
+position = Vector2( 1028.11, 584.568 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 510, 500 )
+scale = Vector2( 0.3, 0.3 )
+xVelocity = 375
+gravityVelocity = 4
+
+[node name="BackgroundStart" type="Area2D" parent="."]
+z_index = -1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="BackgroundStart"]
+position = Vector2( 956.595, 539.523 )
+scale = Vector2( 0.501427, 0.500823 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background" type="Area2D" parent="."]
+visible = false
+position = Vector2( -584.067, -130.912 )
+z_index = -1
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Background"]
+position = Vector2( 1541.48, 675.64 )
+scale = Vector2( 0.500734, 0.503682 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background"]
+shape = SubResource( 1 )
+
+[node name="BackgroundGameOver" type="Area2D" parent="."]
+visible = false
+scale = Vector2( 1.87571, 1.47695 )
+z_index = -1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="BackgroundGameOver"]
+position = Vector2( 509.497, 361.568 )
+scale = Vector2( 0.268848, 0.339698 )
+texture = ExtResource( 7 )
+
+[node name="HUD" parent="." instance=ExtResource( 8 )]
+layer = 2
+
+[node name="EnemyPath" type="Path2D" parent="."]
+curve = SubResource( 2 )
+
+[node name="EnemySpawnLocation" type="PathFollow2D" parent="EnemyPath"]
+position = Vector2( 28.5996, -233.205 )
+rotation = 0.0867366
+
+[node name="BookEvolution" parent="." instance=ExtResource( 9 )]
+position = Vector2( 851.462, 444.233 )
+
+[node name="Diamond" parent="." instance=ExtResource( 10 )]
+position = Vector2( 939.245, 266.083 )
+
+[node name="Diamond2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1466.35, 262.272 )
+
+[node name="Diamond3" parent="." instance=ExtResource( 10 )]
+position = Vector2( 521.876, 264.194 )
+
+[node name="Diamond4" parent="." instance=ExtResource( 10 )]
+position = Vector2( 165.484, 262.304 )
+
+[node name="Diamond5" parent="." instance=ExtResource( 10 )]
+position = Vector2( 1829.87, 262.962 )
+
+[node name="QuestionMark" parent="." instance=ExtResource( 11 )]
+position = Vector2( -5, 875 )
+
+[node name="QuestionMark2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1625, 875 )
+
+[node name="Missile" parent="." instance=ExtResource( 12 )]
+position = Vector2( 60.4208, 1344.36 )
+
+[node name="Tweeter" parent="." instance=ExtResource( 13 )]
+visible = false
+position = Vector2( 75.526, 775.4 )
+
+[node name="GolfBall" parent="." instance=ExtResource( 14 )]
+position = Vector2( 983.588, 549.284 )
+scale = Vector2( 0.24, 0.24 )
+
+[node name="StormyCash" parent="." instance=ExtResource( 15 )]
+
+[node name="BuySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+volume_db = -10.0
+
+[node name="Joemail" parent="." instance=ExtResource( 17 )]
+position = Vector2( 2425.15, 551.628 )
+[connection signal="upgrade1Confirm" from="." to="Player" method="_on_Main_upgrade1Confirm"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
+[connection signal="timeout" from="EnemyTimer" to="." method="_on_EnemyTimer_timeout"]
+[connection signal="timeout" from="EndTimer" to="." method="_on_EndTimer_timeout"]
+[connection signal="end" from="Player" to="." method="_on_Player_end"]
+[connection signal="hit" from="Player" to="." method="_on_Player_hit"]
+[connection signal="input_event" from="BackgroundStart" to="." method="_on_Background_input_event"]
+[connection signal="input_event" from="Background" to="." method="_on_Background_input_event"]
+[connection signal="start_game" from="HUD" to="." method="_on_HUD_start_game"]
+[connection signal="upgrade1" from="HUD" to="." method="_on_HUD_upgrade1"]
+[connection signal="hit" from="BookEvolution" to="." method="_on_BookEvolution_hit"]
+[connection signal="hit" from="Diamond" to="." method="_on_Diamond_hit"]
+[connection signal="hit" from="Diamond2" to="." method="_on_Diamond_hit"]
+[connection signal="hit" from="Diamond3" to="." method="_on_Diamond_hit"]
+[connection signal="hit" from="Diamond4" to="." method="_on_Diamond_hit"]
+[connection signal="hit" from="Diamond5" to="." method="_on_Diamond_hit"]
+[connection signal="hit" from="QuestionMark" to="." method="_on_QuestionMark_hit"]
+[connection signal="hit" from="QuestionMark2" to="." method="_on_QuestionMark_hit"]
+[connection signal="hit" from="GolfBall" to="." method="_on_GolfBall_hit"]
+[connection signal="area_entered" from="StormyCash" to="." method="_on_StormyCash_area_entered"]

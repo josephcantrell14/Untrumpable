@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://QuestionMark.gd" type="Script" id=1]
+[ext_resource path="res://Sounds/CashSound.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sprites/Collectibles/question-mark.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 5.01825, 12.9723 )
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="QuestionMark" type="Area2D" index="0"]
+
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = -1.0
+angular_damp = -1.0
+collision_mask = 0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Transform", "Visibility", "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+position = Vector2( 140.638, 101.966 )
+rotation = -3.14159
+scale = Vector2( 8.67362, 5.31538 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="1"]
+
+position = Vector2( 70.7692, 53.7549 )
+rect = Rect2( -10, -10, 20, 20 )
+
+[node name="Sound" parent="." index="2" instance=ExtResource( 2 )]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="3"]
+
+position = Vector2( 140.869, 104.515 )
+scale = Vector2( 0.35, 0.35 )
+frames = SubResource( 2 )
+animation = "default"
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[connection signal="area_entered" from="." to="." method="_on_QuestionMark_area_entered"]
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+
+
