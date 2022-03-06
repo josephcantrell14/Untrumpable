@@ -9,10 +9,9 @@ Untrumpable is also downloadable from itch.io and Google Play:
 https://josephcantrell14.itch.io/untrumpable
 https://play.google.com/store/apps/details?id=com.joseph.untrumpable&hl=en_US
 
-Feel free to use this code however you please, but if you redistribute it or benefit, please credit me!
-
-
-Font credits: 
-Roboto: https://www.dafont.com/roboto.font
-Shadowed Serif: https://www.dafont.com/shadowed-serif.font
-Trashco: https://www.dafont.com/trashco.font
+Feel free to use this code however you please, but if you redistribute it or benefit, please credit me or donate by purchasing one of my other games!
+<br><br><br><br>
+Font credits:<br>
+Roboto: https://www.dafont.com/roboto.font<br>
+Shadowed Serif: https://www.dafont.com/shadowed-serif.font<br>
+Trashco: https://www.dafont.com/trashco.font<br>
